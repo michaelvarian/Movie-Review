@@ -55,6 +55,10 @@
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="J5h-bf-kcz"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="bc4-lY-KnL"/>
+                                        </connections>
                                     </collectionView>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="VEP-7I-ZdS" userLabel="Genre Collection View">
                                         <rect key="frame" x="16" y="342" width="382" height="427"/>
@@ -75,6 +79,10 @@
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
                                         </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="6rJ-i7-TW4"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="s5C-9p-lpX"/>
+                                        </connections>
                                     </collectionView>
                                 </subviews>
                                 <constraints>
@@ -226,6 +234,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="lzz-U7-RtH"/>
+        <segue reference="ce5-Dv-e15"/>
     </inferredMetricsTieBreakers>
 </document>
