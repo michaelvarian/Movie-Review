@@ -13,6 +13,8 @@ class GenreCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var genreImage: UIImageView!
     @IBOutlet weak var genreTitle: UILabel!
     
+    var genre: [String] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,3 +22,4 @@ class GenreCollectionViewCell: UICollectionViewCell {
     }
 
 }
+
