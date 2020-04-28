@@ -13,12 +13,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
-//    var movieGenres: [NSDictionary]?
-    
-    var movies: [NSDictionary]?
-    
-    let movieGenres: [String] = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family" , "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
-    
+    var movieGenres: [String] = ["Action", "Adventure", "Animation", "Comedy", "Crime", "Documentary", "Drama", "Family" , "Fantasy", "History", "Horror", "Music", "Mystery", "Romance", "Science Fiction", "TV Movie", "Thriller", "War", "Western"]
+
     var selectedGenre: String = ""
     var searchMovieText:String?
     
@@ -28,9 +24,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         collectionView.register(UINib.init(nibName: "PopularMovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PopularMovieCollectionViewCell")
         genreCollectionView.register(UINib.init(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")
-        
-        MovieRequest.fetchMovieGenres()
-        
+                
         // Place the search bar in the navigation Item's title view.
         self.definesPresentationContext = true
         searchController.searchBar.placeholder = "Search Movie"
@@ -41,6 +35,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.searchController = searchController
         // Don't hide the navigation bar because the search bar is in it.
         self.navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

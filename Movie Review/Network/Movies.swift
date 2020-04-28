@@ -8,21 +8,31 @@
 
 import Foundation
 
-class MovieRequest: NSObject{
-    class func fetchMovieGenres() {
-        let api_Key = "037f89158dc387e4d9dfe4b2a27e1de5"
-        let url = NSURL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=\(api_Key)&language=en-US")
-        let request = NSURLRequest(url: url! as URL, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData, timeoutInterval: 10)
-       
-        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: .main)
-        
-        let task: URLSessionDataTask = session.dataTask(with: request as URLRequest, completionHandler: { (dataOrNil, response, error) in
-            if let data = dataOrNil {
-                if let responseDictionary = try! JSONSerialization.jsonObject(with: data, options:[]) as? NSDictionary {
-                     responseDictionary["genres"]
-                }
+class MovieRequest{
+    
+    func fetchGenre() {
+        struct Genre: Codable {
+            var id: Int
+            var name: String
+            
+            private enum CodingKeys: String, CodingKey {
+                case id
+                case name
             }
-        })
-        task.resume()
+        }
+        
+        guard let genreUrl = URL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=037f89158dc387e4d9dfe4b2a27e1de5&language=en-US") else { return }
+        URLSession.shared.dataTask(with: genreUrl) { (data, response
+            , error) in
+            guard let data = data else { return }
+            do {
+                let decoder = JSONDecoder()
+                let genreData = try decoder.decode(Genre.self, from: data)
+                print(genreData.name ?? "Empty Name")
+                
+            } catch let err {
+                print("Err", err)
+            }
+        }.resume()
     }
 }
