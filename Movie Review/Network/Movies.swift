@@ -12,10 +12,15 @@ class MovieRequest{
     
     func fetchGenre() {
         struct Genre: Codable {
+            var genres: [GenreElement]
+        }
+        
+        // MARK: - GenreElement
+        struct GenreElement: Codable {
             var id: Int
             var name: String
-            
-            private enum CodingKeys: String, CodingKey {
+        
+        private enum CodingKeys: String, CodingKey {
                 case id
                 case name
             }
@@ -27,7 +32,7 @@ class MovieRequest{
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
-                let genreData = try decoder.decode(Genre.self, from: data)
+                let genreData = try decoder.decode(GenreElement.self, from: data)
                 print(genreData.name ?? "Empty Name")
                 
             } catch let err {
