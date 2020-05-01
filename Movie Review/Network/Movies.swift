@@ -6,38 +6,26 @@
 //  Copyright © 2020 Michael Varian Sutanto. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-class MovieRequest{
+class MovieRequest: NSObject{
     
-    func fetchGenre() {
-        struct Genre: Codable {
-            var genres: [GenreElement]
+    class func fetchGenre(parameters: [String: String], completion: @escaping(GenresResponse) -> Void) {
+        var components = URLComponents(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=037f89158dc387e4d9dfe4b2a27e1de5&language=en-US")!
+        components.queryItems = parameters.map {(id, name) in URLQueryItem(name: id, value: name)
         }
         
-        // MARK: - GenreElement
-        struct GenreElement: Codable {
-            var id: Int
-            var name: String
-        
-        private enum CodingKeys: String, CodingKey {
-                case id
-                case name
+        if let genreUrl = components.url{
+            URLSession.shared.dataTask(with: genreUrl) { (data, response, error) in
+                if let data = data {
+                    do {
+                        let genreData = try JSONDecoder().decode(GenresResponse.self, from: data)
+                        completion(genreData)
+                    } catch let err {
+                        print("Err", err)
+                    }
+                }
+                }.resume()
             }
-        }
-        
-        guard let genreUrl = URL(string: "https://api.themoviedb.org/3/genre/movie/list?api_key=037f89158dc387e4d9dfe4b2a27e1de5&language=en-US") else { return }
-        URLSession.shared.dataTask(with: genreUrl) { (data, response
-            , error) in
-            guard let data = data else { return }
-            do {
-                let decoder = JSONDecoder()
-                let genreData = try decoder.decode(GenreElement.self, from: data)
-                print(genreData.name ?? "Empty Name")
-                
-            } catch let err {
-                print("Err", err)
-            }
-        }.resume()
     }
 }

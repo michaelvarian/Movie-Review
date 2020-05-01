@@ -22,6 +22,7 @@
 		656D4E94244742C00029E41E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656D4E92244742C00029E41E /* Main.storyboard */; };
 		656D4E96244742C30029E41E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 656D4E95244742C30029E41E /* Assets.xcassets */; };
 		656D4E99244742C30029E41E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 656D4E97244742C30029E41E /* LaunchScreen.storyboard */; };
+		657A667A245C32370093C844 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A6679245C32370093C844 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		656D4E95244742C30029E41E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		656D4E98244742C30029E41E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		656D4E9A244742C30029E41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657A6679245C32370093C844 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 		656D4E8B244742C00029E41E /* Movie Review */ = {
 			isa = PBXGroup;
 			children = (
+				657A6678245C321B0093C844 /* Model */,
 				6557668924477BE400CFE98F /* Extension */,
 				6557668A24477BF300CFE98F /* Network */,
 				6557667A2447774200CFE98F /* View */,
@@ -148,6 +151,14 @@
 				656D4E9A244742C30029E41E /* Info.plist */,
 			);
 			path = "Movie Review";
+			sourceTree = "<group>";
+		};
+		657A6678245C321B0093C844 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				657A6679245C32370093C844 /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +242,7 @@
 				6557668C24477C1200CFE98F /* MoviesExtention.swift in Sources */,
 				656D4E8D244742C00029E41E /* AppDelegate.swift in Sources */,
 				65576679244774DA00CFE98F /* MoviesViewController.swift in Sources */,
+				657A667A245C32370093C844 /* Model.swift in Sources */,
 				65576687244777FB00CFE98F /* GenreCollectionViewCell.swift in Sources */,
 				656D4E8F244742C00029E41E /* SceneDelegate.swift in Sources */,
 			);
