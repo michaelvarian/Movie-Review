@@ -15,13 +15,7 @@ class HomeViewController: UIViewController {
     
     var selectedGenre: String = ""
     var searchMovieText:String?
-    var movieGenres = [GenreElement](){
-        didSet{
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
+    var movieGenres = [GenreElement]()
     
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -29,9 +23,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         collectionView.register(UINib.init(nibName: "PopularMovieCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "PopularMovieCollectionViewCell")
         genreCollectionView.register(UINib.init(nibName: "GenreCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "GenreCollectionViewCell")
-        MovieRequest.fetchGenre(parameters: [:]) { (response) in
-            self.movieGenres = response.genres ?? []
-        }
         
         // Place the search bar in the navigation Item's title view.
         self.definesPresentationContext = true
@@ -43,9 +34,10 @@ class HomeViewController: UIViewController {
         self.navigationItem.searchController = searchController
         // Don't hide the navigation bar because the search bar is in it.
         self.navigationItem.hidesSearchBarWhenScrolling = false
-        
+        MovieRequest.fetchGenre { (response) in
+        }
+
         print(movieGenres)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
